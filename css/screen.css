@@ -1,0 +1,38 @@
+:root {
+  --baby-powder: #fbf9f5;
+  --davys-gray: #4a4b4a;
+  --soft-border: #4a4b4a11;
+  --grullo: #a19a8b;
+}
+html,
+body {
+  background-color: var(--baby-powder);
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#frame {
+  border: solid 25px var(--grullo);
+  border-radius: 3px;
+  box-shadow: -7px 7px 25px var(--davys-gray);
+  display: flex;
+  height: 600px;
+  margin: auto;
+  width: 600px;
+}
+
+#canvas-container {
+  display: flex;
+  height: 600px;
+  margin: auto;
+  width: 500px;
+}
+
+canvas {
+  border: solid 1px var(--soft-border);
+  border-radius: 3px;
+  margin: auto;
+}
