@@ -19,16 +19,16 @@ body {
   border-radius: 3px;
   box-shadow: -7px 7px 25px var(--davys-gray);
   display: flex;
-  height: 600px;
+  height: min(calc(100vh - 100px), calc(100vw - 100px), 600px);
   margin: auto;
-  width: 600px;
+  width: min(calc(100vh - 100px), calc(100vw - 100px), 600px);
 }
 
 #canvas-container {
   display: flex;
-  height: 600px;
+  height: 100%;
   margin: auto;
-  width: 500px;
+  width: 100%;
 }
 
 canvas {

@@ -1,16 +1,18 @@
 /* eslint-disable no-undef, no-unused-vars */
-const SIZE = 500;
+const MAX_SIZE = 500;
 const BABY_POWDER = "#FBF9F5";
 const DAVYS_GRAY = "#4A4B4A";
 const BOUNDS = 100;
 const STROKE_WEIGHT = 3;
 
-const STEP = SIZE / 30;
-
+let size;
+let step;
 let lines = [];
 
 function setup() {
-  const canvas = createCanvas(SIZE, SIZE);
+  size = Math.min(windowWidth - 100, windowHeight - 100, MAX_SIZE);
+  step = size / 30;
+  const canvas = createCanvas(size, size);
   const container = document.getElementById("canvas-container");
   canvas.parent(container);
   stroke(DAVYS_GRAY);
@@ -43,11 +45,11 @@ function draw() {
 
 function createLines() {
   lines = [];
-  for (let i = STEP; i <= SIZE - STEP; i += STEP) {
+  for (let i = step; i <= size - step; i += step) {
     const line = [];
-    for (let j = STEP; j <= SIZE + STEP; j += STEP) {
-      const distanceToCenter = abs(j - SIZE / 2);
-      const variance = max(SIZE / 3 - distanceToCenter, 0);
+    for (let j = step; j <= size + step; j += step) {
+      const distanceToCenter = abs(j - size / 2);
+      const variance = max(size / 3 - distanceToCenter, 0);
       const v = max(random((variance / 2) * -1), -BOUNDS);
       const y = map(v, -BOUNDS, 0, i - BOUNDS, i);
       const point = { x: j, y, min: i + v, max: i, t: 0 };
@@ -71,5 +73,7 @@ function updateLines() {
 
 // This Redraws the Canvas when resized
 windowResized = function () {
-  resizeCanvas(windowWidth, windowHeight);
+  size = Math.min(windowWidth - 100, windowHeight - 100, MAX_SIZE);
+  step = size / 30;
+  resizeCanvas(size, size);
 };
